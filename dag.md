@@ -133,6 +133,15 @@ npm run build
                     proxy_set_header Accept-Encoding "";
                     proxy_pass http://goserveraddress:8000/;
                 }
+                location /trias-resource/ {
+	                proxy_set_header  Host $host;
+                    proxy_headers_hash_max_size 1024;
+                    proxy_headers_hash_bucket_size 128;
+                    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for ;
+                    proxy_set_header Accept-Encoding "";
+                    proxy_pass http://localhost:9081/trias-resource/;
+	            }
+
             }
             ……
         }
