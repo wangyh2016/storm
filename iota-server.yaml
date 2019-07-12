@@ -1,0 +1,42 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: iota-server
+  namespace: default
+  labels: 
+    app: iota-dt
+spec: 
+  template: 
+    metadata: 
+      labels: 
+        app: iota-dt
+    spec: 
+      containers: 
+      - name: iota-dt
+        image: iota-node:dev
+        ports: 
+        - containerPort: 14700
+          name: iotaport
+        - containerPort: 13700
+          name: nerighborport
+        volumeMounts: 
+        - mountPath: /iri/data
+          name: iota-data
+      volumes: 
+      - name: iota-data
+        hostPath: 
+          path: /data/iri/stest 
+
+---
+apiVersion: v1
+kind: Service
+metadata: 
+   name: iota-dt
+   namespace: default
+spec:
+  selector: 
+    app: iota-dt
+  ports: 
+  - name: iotaserverport
+    port: 14700
+    targetPort: iotaport
