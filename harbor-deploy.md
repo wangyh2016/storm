@@ -17,7 +17,7 @@ cd harbor/
 sudo vi harbor.cfg
 (图中hostname位置修改成你自己harbor所在节点的ip)
 ```  
-![](https://img-blog.csdnimg.cn/2018120612230231.png?raw=true)
+![](https://img-blog.csdnimg.cn/2018120612230231.png?raw=true)  
 (图中harbor_admin_password位置可以修改成你想要的密码，也可以不改)
 ![](https://img-blog.csdnimg.cn/20181206122359168.png?raw=true)
 ```
@@ -55,7 +55,7 @@ sudo docker tag tomcat 192.168.***.***/runtime/tomcat
  注意！现在你还不能直接去push，往后你哪个系统需要和自己的harbor仓库交互时，第一次的时候一定要先docker login一下你的harbor，用户名就是admin，密码就是你自己设置的harbor_admin密码：
 ```  
 ![](https://github.com/wangyh2016/storm/blob/master/harbor-login.png?raw=true)
-登录成功收，以后你就可以将刚刚打好标签的镜像push到你的harbor了：
+登录成功后，以后你就可以将刚刚打好标签的镜像push到你的harbor了：
 ```    
 sudo docker push 192.168.***.***/runtime/tomcat
 稍等一会，你就可以在你的harbor界面下，发现项目runtime下有了：
